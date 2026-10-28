@@ -1,0 +1,92 @@
+{
+  "project_format_version": 7,
+  "label": "Stage 1 five-recipe demonstration",
+  "data_kind": "real",
+  "ratio_encoding": "fraction",
+  "source_mode": "csv",
+  "ratio_definition": "Recipe label encoded as A/(A+B). The material mapping and whether recipe labels represent volume, bead or chain counts are not confirmed; this is a declared recipe coordinate, not measured bead fraction.",
+  "q_unit": "simulation_length^-1",
+  "time_unit": "step",
+  "time_origin": "Stage 1 simulation step",
+  "structure_definition": "Normalized concentration structure factor |c2*rho1(q)-c1*rho2(q)|^2/(N*c1*c2), c_i from actual type-1/type-2 counts; fixed orthorhombic periodic box; excludes q=0. Material mapping of types is unconfirmed.",
+  "conditions_note": "Provided Stage 1 derived curves. Box 128^3; frames 1490-1499; q_max=1; dq=0.01. No raw positions or bonds included. Interaction, temperature and mapping details are not fully established.",
+  "kernel_choices": [
+    "linear",
+    "rbf",
+    "matern_32"
+  ],
+  "rows": [
+    {
+      "label": "1:21",
+      "amount_a": 1,
+      "amount_b": 21,
+      "ratio": 0.045454545454545456,
+      "seed_id": "1",
+      "path": "examples/five_recipes/recipe_1/sqt.csv"
+    },
+    {
+      "label": "5:17",
+      "amount_a": 5,
+      "amount_b": 17,
+      "ratio": 0.22727272727272727,
+      "seed_id": "1",
+      "path": "examples/five_recipes/recipe_2/sqt.csv"
+    },
+    {
+      "label": "8:14",
+      "amount_a": 8,
+      "amount_b": 14,
+      "ratio": 0.36363636363636365,
+      "seed_id": "1",
+      "path": "examples/five_recipes/recipe_3/sqt.csv"
+    },
+    {
+      "label": "11:11",
+      "amount_a": 11,
+      "amount_b": 11,
+      "ratio": 0.5,
+      "seed_id": "1",
+      "path": "examples/five_recipes/recipe_4/sqt.csv"
+    },
+    {
+      "label": "15:7",
+      "amount_a": 15,
+      "amount_b": 7,
+      "ratio": 0.6818181818181818,
+      "seed_id": "1",
+      "path": "examples/five_recipes/recipe_5/sqt.csv"
+    }
+  ],
+  "q_settings": {
+    "time_start": 1490,
+    "time_end": 1499,
+    "q_min": 0.04908738521234052,
+    "q_max": 0.49,
+    "blocks": 2,
+    "min_prominence": 0.15,
+    "competitor_fraction": 0.8,
+    "stability_tolerance": 0.02
+  },
+  "m_settings": {
+    "time_start": 1490,
+    "time_end": 1499,
+    "q_min": 0,
+    "q_max": 0.2,
+    "blocks": 2
+  },
+  "low_q_settings": {
+    "time_start": 1490,
+    "time_end": 1499,
+    "q_min": 0,
+    "q_max": 0.11,
+    "blocks": 2
+  },
+  "target_kind": "composition_strength",
+  "settings": {
+    "time_start": 1490,
+    "time_end": 1499,
+    "q_min": 0,
+    "q_max": 0.2,
+    "blocks": 2
+  }
+}

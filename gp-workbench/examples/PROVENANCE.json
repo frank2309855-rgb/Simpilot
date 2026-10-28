@@ -1,0 +1,37 @@
+{
+  "data_kind": "real_derived_example",
+  "files": [
+    {
+      "recipe": "1:21",
+      "csv": "examples/five_recipes/recipe_1/sqt.csv",
+      "sha256": "95ec6a683482e411f17d567768824756e22e3a70a685f1c0c9b40d5000de70fa"
+    },
+    {
+      "recipe": "5:17",
+      "csv": "examples/five_recipes/recipe_2/sqt.csv",
+      "sha256": "5390e073b7193467cf81eb00ad9884e4349405d769b1cff261aa3d1054d0377f"
+    },
+    {
+      "recipe": "8:14",
+      "csv": "examples/five_recipes/recipe_3/sqt.csv",
+      "sha256": "5b6d62c8a76d9b81dea3599cb22251651608a731978bbdf8048580353565d1e1"
+    },
+    {
+      "recipe": "11:11",
+      "csv": "examples/five_recipes/recipe_4/sqt.csv",
+      "sha256": "5a652aaabd913991f4a7bbb266de121c2d8f316f26f1a696a4cbbd57f2e8c26f"
+    },
+    {
+      "recipe": "15:7",
+      "csv": "examples/five_recipes/recipe_5/sqt.csv",
+      "sha256": "4a8db01bbade0eb04c0b38722fc9f0196938e5c69d50a3abdfdb815e14c235ed"
+    }
+  ],
+  "removed": [
+    "raw source paths and identifiers",
+    "Drive URLs and file/folder IDs",
+    "original transfer/cache records",
+    "private absolute paths"
+  ],
+  "disclosure": "CSV values are unchanged. Original-source traceability is intentionally not distributed; the manifests retain calculation settings, shell geometry and derived-CSV checksums."
+}

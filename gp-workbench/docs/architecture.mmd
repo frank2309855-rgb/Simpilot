@@ -1,0 +1,12 @@
+flowchart LR
+    UI["Researcher / browser UI"] --> API["Local HTTP server<br/>127.0.0.1 only"]
+    API --> SERVICE["Workbench service"]
+    CSV["Bundled CSV + manifest<br/>5 recipes, 1 seed each"] --> TARGET["Target extraction + checks<br/>q* / M / low-q mean"]
+    RAW["Optional own raw data / read-only Drive"] -. "local raw processing" .-> TARGET
+    SERVICE --> TARGET
+    TARGET --> TRAIN["Fold-local GP training<br/>LORO + mean / linear baselines"]
+    SERVICE --> TRAIN
+    TRAIN --> EVAL["Held-out evaluation<br/>Interpolation / extrapolation"]
+    EVAL --> OUT["Local reports, models and history<br/>runtime/"]
+    OUT --> API
+    API --> UI

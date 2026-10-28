@@ -1,0 +1,8 @@
+name: gp-workbench
+channels:
+  - defaults
+dependencies:
+  - python=3.13.9
+  - pip
+  - pip:
+    - -r requirements.txt

@@ -1,0 +1,2 @@
+# Compatibility alias for earlier workbench setup instructions.
+-r requirements.txt

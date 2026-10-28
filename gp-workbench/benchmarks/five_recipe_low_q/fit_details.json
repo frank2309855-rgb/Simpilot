@@ -1,0 +1,1212 @@
+{
+  "schema_version": "public-fit-details-1.0",
+  "purpose": "Readable specifications and fold diagnostics; not a loadable model artifact.",
+  "runtime": {
+    "gp_model": "0.2.0",
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "sklearn": "1.7.2"
+  },
+  "training": {
+    "random_state": 20261020,
+    "n_restarts_optimizer": 2,
+    "optimize": true,
+    "jitter": 1e-10,
+    "signal_variance": 1.0,
+    "signal_variance_bounds": [
+      0.001,
+      1000.0
+    ],
+    "noise_variance": 0.05,
+    "noise_variance_bounds": [
+      1e-06,
+      1.0
+    ]
+  },
+  "model_specifications": [
+    {
+      "model_id": "gp_ratio_linear",
+      "label": "Ratio · Linear GP",
+      "inputs": [
+        "ratio"
+      ],
+      "kernel": "{\"sigma_0\": 1.0, \"sigma_0_bounds\": \"fixed\", \"type\": \"linear\"}",
+      "kind": "gp",
+      "pipeline_id": "gp_37e8e6eb5afb",
+      "fit_notes": "Fold-local X scaling and y scaling; constant mean, signal amplitude plus learned homoscedastic WhiteKernel; LML optimization on training only; observed-target SD; hyperparameter uncertainty not integrated."
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "label": "Ratio · RBF GP",
+      "inputs": [
+        "ratio"
+      ],
+      "kernel": "{\"length_scale\": 1.0, \"length_scale_bounds\": [0.01, 100.0], \"type\": \"rbf\"}",
+      "kind": "gp",
+      "pipeline_id": "gp_37e8e6eb5afb",
+      "fit_notes": "Fold-local X scaling and y scaling; constant mean, signal amplitude plus learned homoscedastic WhiteKernel; LML optimization on training only; observed-target SD; hyperparameter uncertainty not integrated."
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "label": "Ratio · Matérn 3/2 GP",
+      "inputs": [
+        "ratio"
+      ],
+      "kernel": "{\"length_scale\": 1.0, \"length_scale_bounds\": [0.01, 100.0], \"nu\": 1.5, \"type\": \"matern\"}",
+      "kind": "gp",
+      "pipeline_id": "gp_37e8e6eb5afb",
+      "fit_notes": "Fold-local X scaling and y scaling; constant mean, signal amplitude plus learned homoscedastic WhiteKernel; LML optimization on training only; observed-target SD; hyperparameter uncertainty not integrated."
+    },
+    {
+      "model_id": "baseline_mean",
+      "label": "平均值基準",
+      "inputs": [
+        "constant_intercept"
+      ],
+      "kernel": "none",
+      "kind": "baseline",
+      "pipeline_id": "mean_37e8e6eb5afb",
+      "fit_notes": "Training-only Gaussian plug-in approximation with residual and coefficient uncertainty; mean baseline ignores features. Not a Student-t predictive distribution."
+    },
+    {
+      "model_id": "baseline_linear",
+      "label": "線性基準",
+      "inputs": [
+        "ratio"
+      ],
+      "kernel": "none",
+      "kind": "baseline",
+      "pipeline_id": "linear_37e8e6eb5afb",
+      "fit_notes": "Training-only Gaussian plug-in approximation with residual and coefficient uncertainty; mean baseline ignores features. Not a Student-t predictive distribution."
+    }
+  ],
+  "folds": [
+    {
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ]
+    },
+    {
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ]
+    },
+    {
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ]
+    },
+    {
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ]
+    },
+    {
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ]
+    }
+  ],
+  "fold_fits": [
+    {
+      "model_id": "gp_ratio_linear",
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ],
+      "random_state": 20261020,
+      "x_mean": [
+        0.4431818181818181
+      ],
+      "x_scale": [
+        0.1681664612153266
+      ],
+      "y_mean": 7.923098626446201,
+      "y_scale": 2.390098806736307,
+      "noise_variance": 1.315351531632663,
+      "feature_min": [
+        0.22727272727272727
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "fitted_kernel": "0.62**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.23)",
+      "theta": [
+        -0.95484391092993,
+        -1.4685654592986892
+      ],
+      "log_marginal_likelihood_normalized": -4.778023853920382
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ],
+      "random_state": 20261020,
+      "x_mean": [
+        0.4431818181818181
+      ],
+      "x_scale": [
+        0.1681664612153266
+      ],
+      "y_mean": 7.923098626446201,
+      "y_scale": 2.390098806736307,
+      "noise_variance": 5.712572305962322e-06,
+      "feature_min": [
+        0.22727272727272727
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.85**2 * RBF(length_scale=2.09) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        1.2301915146132076,
+        0.738436191224419,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.794601074982523
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ],
+      "random_state": 20261020,
+      "x_mean": [
+        0.4431818181818181
+      ],
+      "x_scale": [
+        0.1681664612153266
+      ],
+      "y_mean": 7.923098626446201,
+      "y_scale": 2.390098806736307,
+      "noise_variance": 5.712572305962322e-06,
+      "feature_min": [
+        0.22727272727272727
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.47**2 * Matern(length_scale=2.39, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.7722527078515787,
+        0.870615161072951,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -4.93318399355953
+    },
+    {
+      "model_id": "baseline_mean",
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ],
+      "random_state": 20261020,
+      "x_mean": [
+        0.4431818181818181
+      ],
+      "x_scale": [
+        0.1681664612153266
+      ],
+      "y_mean": 7.923098626446201,
+      "y_scale": 2.390098806736307,
+      "noise_variance": 7.616763074616426,
+      "feature_min": [
+        0.22727272727272727
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        7.923098626446201
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "fold_id": "hold_ratio_01",
+      "train_ids": [
+        "ratio_02",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_01"
+      ],
+      "random_state": 20261020,
+      "x_mean": [
+        0.4431818181818181
+      ],
+      "x_scale": [
+        0.1681664612153266
+      ],
+      "y_mean": 7.923098626446201,
+      "y_scale": 2.390098806736307,
+      "noise_variance": 1.315351574049863,
+      "feature_min": [
+        0.22727272727272727
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        7.923098626446201,
+        2.248309702629375
+      ]
+    },
+    {
+      "model_id": "gp_ratio_linear",
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ],
+      "random_state": 20261021,
+      "x_mean": [
+        0.3977272727272727
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 7.236185641491648,
+      "y_scale": 3.488307117211002,
+      "noise_variance": 1.451957777900687,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "fitted_kernel": "0.664**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.119)",
+      "theta": [
+        -0.8202116586311053,
+        -2.125920266260394
+      ],
+      "log_marginal_likelihood_normalized": -4.181465503032291
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ],
+      "random_state": 20261021,
+      "x_mean": [
+        0.3977272727272727
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 7.236185641491648,
+      "y_scale": 3.488307117211002,
+      "noise_variance": 1.2168286543984937e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.18**2 * RBF(length_scale=1.48) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.3343357188851572,
+        0.38928051470372144,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.4274168874291715
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ],
+      "random_state": 20261021,
+      "x_mean": [
+        0.3977272727272727
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 7.236185641491648,
+      "y_scale": 3.488307117211002,
+      "noise_variance": 1.2168286543984937e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.42**2 * Matern(length_scale=2.64, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.7072962704103537,
+        0.9711433550910384,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -4.364771426626708
+    },
+    {
+      "model_id": "baseline_mean",
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ],
+      "random_state": 20261021,
+      "x_mean": [
+        0.3977272727272727
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 7.236185641491648,
+      "y_scale": 3.488307117211002,
+      "noise_variance": 16.224382058646576,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        7.236185641491648
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "fold_id": "hold_ratio_02",
+      "train_ids": [
+        "ratio_01",
+        "ratio_03",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_02"
+      ],
+      "random_state": 20261021,
+      "x_mean": [
+        0.3977272727272727
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 7.236185641491648,
+      "y_scale": 3.488307117211002,
+      "noise_variance": 1.4519575854543105,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        7.236185641491648,
+        3.382648038335909
+      ]
+    },
+    {
+      "model_id": "gp_ratio_linear",
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ],
+      "random_state": 20261022,
+      "x_mean": [
+        0.36363636363636365
+      ],
+      "x_scale": [
+        0.2447802185061138
+      ],
+      "y_mean": 6.457660098115429,
+      "y_scale": 3.712220778869839,
+      "noise_variance": 1.211496755024865,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "fitted_kernel": "0.675**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.0879)",
+      "theta": [
+        -0.7851689219547616,
+        -2.4314039976493333
+      ],
+      "log_marginal_likelihood_normalized": -3.892546602125395
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ],
+      "random_state": 20261022,
+      "x_mean": [
+        0.36363636363636365
+      ],
+      "x_scale": [
+        0.2447802185061138
+      ],
+      "y_mean": 6.457660098115429,
+      "y_scale": 3.712220778869839,
+      "noise_variance": 1.3780583111072999e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.05**2 * RBF(length_scale=1.35) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.09091510357953911,
+        0.3037047010734922,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.4886158764899524
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ],
+      "random_state": 20261022,
+      "x_mean": [
+        0.36363636363636365
+      ],
+      "x_scale": [
+        0.2447802185061138
+      ],
+      "y_mean": 6.457660098115429,
+      "y_scale": 3.712220778869839,
+      "noise_variance": 1.3780583111072999e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.22**2 * Matern(length_scale=2.22, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.4031008341076488,
+        0.7971330784919314,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -4.288749215449579
+    },
+    {
+      "model_id": "baseline_mean",
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ],
+      "random_state": 20261022,
+      "x_mean": [
+        0.36363636363636365
+      ],
+      "x_scale": [
+        0.2447802185061138
+      ],
+      "y_mean": 6.457660098115429,
+      "y_scale": 3.712220778869839,
+      "noise_variance": 18.374110814764,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        6.457660098115428
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "fold_id": "hold_ratio_03",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_04",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_03"
+      ],
+      "random_state": 20261022,
+      "x_mean": [
+        0.36363636363636365
+      ],
+      "x_scale": [
+        0.2447802185061138
+      ],
+      "y_mean": 6.457660098115429,
+      "y_scale": 3.712220778869839,
+      "noise_variance": 1.2114984267391116,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        6.457660098115428,
+        3.6297154017503153
+      ]
+    },
+    {
+      "model_id": "gp_ratio_linear",
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ],
+      "random_state": 20261023,
+      "x_mean": [
+        0.32954545454545453
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 5.862923083306368,
+      "y_scale": 3.3058448702696785,
+      "noise_variance": 0.7277319833337464,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "fitted_kernel": "0.683**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.0666)",
+      "theta": [
+        -0.7620573996282601,
+        -2.709206602541389
+      ],
+      "log_marginal_likelihood_normalized": -3.625832900873837
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ],
+      "random_state": 20261023,
+      "x_mean": [
+        0.32954545454545453
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 5.862923083306368,
+      "y_scale": 3.3058448702696785,
+      "noise_variance": 1.0928610306288352e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.16**2 * RBF(length_scale=1.41) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.3004393438084522,
+        0.34657702789866784,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.544560228084005
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ],
+      "random_state": 20261023,
+      "x_mean": [
+        0.32954545454545453
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 5.862923083306368,
+      "y_scale": 3.3058448702696785,
+      "noise_variance": 1.0928610306288352e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.45**2 * Matern(length_scale=2.66, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.7414666175621705,
+        0.9791587543933219,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -4.411124640673931
+    },
+    {
+      "model_id": "baseline_mean",
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ],
+      "random_state": 20261023,
+      "x_mean": [
+        0.32954545454545453
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 5.862923083306368,
+      "y_scale": 3.3058448702696785,
+      "noise_variance": 14.571480408384467,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        5.8629230833063675
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "fold_id": "hold_ratio_04",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_05"
+      ],
+      "test_ids": [
+        "ratio_04"
+      ],
+      "random_state": 20261023,
+      "x_mean": [
+        0.32954545454545453
+      ],
+      "x_scale": [
+        0.23260783511884908
+      ],
+      "y_mean": 5.862923083306368,
+      "y_scale": 3.3058448702696785,
+      "noise_variance": 0.7277319001580536,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        5.8629230833063675,
+        3.2503452672307485
+      ]
+    },
+    {
+      "model_id": "gp_ratio_linear",
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ],
+      "random_state": 20261024,
+      "x_mean": [
+        0.28409090909090906
+      ],
+      "x_scale": [
+        0.16816646121532663
+      ],
+      "y_mean": 5.71926605975134,
+      "y_scale": 3.1159825079665873,
+      "noise_variance": 0.1223438103724495,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.5
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "fitted_kernel": "0.703**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.0126)",
+      "theta": [
+        -0.7058280173236249,
+        -4.3740091086410064
+      ],
+      "log_marginal_likelihood_normalized": -1.9885686557505147
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ],
+      "random_state": 20261024,
+      "x_mean": [
+        0.28409090909090906
+      ],
+      "x_scale": [
+        0.16816646121532663
+      ],
+      "y_mean": 5.71926605975134,
+      "y_scale": 3.1159825079665873,
+      "noise_variance": 9.709346989953748e-06,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.5
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.27**2 * RBF(length_scale=2.01) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.4852481522704282,
+        0.6987377955965192,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -2.5075911970657163
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ],
+      "random_state": 20261024,
+      "x_mean": [
+        0.28409090909090906
+      ],
+      "x_scale": [
+        0.16816646121532663
+      ],
+      "y_mean": 5.71926605975134,
+      "y_scale": 3.1159825079665873,
+      "noise_variance": 9.709346989953748e-06,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.5
+      ],
+      "n_training_rows": 4,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "2.04**2 * Matern(length_scale=5.19, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        1.4251266470410764,
+        1.6460751360051862,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.9145139171067522
+    },
+    {
+      "model_id": "baseline_mean",
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ],
+      "random_state": 20261024,
+      "x_mean": [
+        0.28409090909090906
+      ],
+      "x_scale": [
+        0.16816646121532663
+      ],
+      "y_mean": 5.71926605975134,
+      "y_scale": 3.1159825079665873,
+      "noise_variance": 12.945795986604994,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.5
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        5.719266059751338
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "fold_id": "hold_ratio_05",
+      "train_ids": [
+        "ratio_01",
+        "ratio_02",
+        "ratio_03",
+        "ratio_04"
+      ],
+      "test_ids": [
+        "ratio_05"
+      ],
+      "random_state": 20261024,
+      "x_mean": [
+        0.28409090909090906
+      ],
+      "x_scale": [
+        0.16816646121532663
+      ],
+      "y_mean": 5.71926605975134,
+      "y_scale": 3.1159825079665873,
+      "noise_variance": 0.12234340316074033,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.5
+      ],
+      "n_training_rows": 4,
+      "warnings": [],
+      "coefficients": [
+        5.719266059751338,
+        3.1061512017887
+      ]
+    }
+  ],
+  "full_data_fits": [
+    {
+      "model_id": "gp_ratio_linear",
+      "x_mean": [
+        0.3636363636363636
+      ],
+      "x_scale": [
+        0.218938083250769
+      ],
+      "y_mean": 6.639826701822197,
+      "y_scale": 3.3402402869977235,
+      "noise_variance": 1.028896913334211,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 5,
+      "warnings": [],
+      "fitted_kernel": "0.674**2 * DotProduct(sigma_0=1) + WhiteKernel(noise_level=0.0922)",
+      "theta": [
+        -0.7898986868627876,
+        -2.383598222803181
+      ],
+      "log_marginal_likelihood_normalized": -4.378665284317543
+    },
+    {
+      "model_id": "gp_ratio_rbf",
+      "x_mean": [
+        0.3636363636363636
+      ],
+      "x_scale": [
+        0.218938083250769
+      ],
+      "y_mean": 6.639826701822197,
+      "y_scale": 3.3402402869977235,
+      "noise_variance": 1.1157205174882638e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 5,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.17**2 * RBF(length_scale=1.64) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.3061240172354285,
+        0.4929939085831967,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -1.3790792088784931
+    },
+    {
+      "model_id": "gp_ratio_matern_32",
+      "x_mean": [
+        0.3636363636363636
+      ],
+      "x_scale": [
+        0.218938083250769
+      ],
+      "y_mean": 6.639826701822197,
+      "y_scale": 3.3402402869977235,
+      "noise_variance": 1.1157205174882638e-05,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 5,
+      "warnings": [
+        "ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-06. Decreasing the bound and calling fit again may find a better value."
+      ],
+      "fitted_kernel": "1.56**2 * Matern(length_scale=3.43, nu=1.5) + WhiteKernel(noise_level=1e-06)",
+      "theta": [
+        0.8854368632548938,
+        1.232415792340406,
+        -13.815510557964274
+      ],
+      "log_marginal_likelihood_normalized": -3.899752345100091
+    },
+    {
+      "model_id": "baseline_mean",
+      "x_mean": [
+        0.3636363636363636
+      ],
+      "x_scale": [
+        0.218938083250769
+      ],
+      "y_mean": 6.639826701822197,
+      "y_scale": 3.3402402869977235,
+      "noise_variance": 13.946506468603292,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 5,
+      "warnings": [],
+      "coefficients": [
+        6.639826701822196
+      ]
+    },
+    {
+      "model_id": "baseline_linear",
+      "x_mean": [
+        0.3636363636363636
+      ],
+      "x_scale": [
+        0.218938083250769
+      ],
+      "y_mean": 6.639826701822197,
+      "y_scale": 3.3402402869977235,
+      "noise_variance": 1.0288967611997997,
+      "feature_min": [
+        0.04545454545454545
+      ],
+      "feature_max": [
+        0.6818181818181818
+      ],
+      "n_training_rows": 5,
+      "warnings": [],
+      "coefficients": [
+        6.639826701822196,
+        3.246516150916665
+      ]
+    }
+  ],
+  "warning_count": 12
+}

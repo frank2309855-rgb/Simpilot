@@ -1,0 +1,12 @@
+# Fully pinned runtime. Install using --only-binary=:all: as described in README.
+numpy==2.3.5
+scipy==1.16.3
+scikit-learn==1.7.2
+requests==2.34.2
+urllib3==2.8.0
+certifi==2026.10.23
+idna==3.20
+charset-normalizer==3.5.2
+joblib==1.6.0
+threadpoolctl==3.7.0
+cloudpickle==3.1.2

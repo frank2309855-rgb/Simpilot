@@ -1,0 +1,101 @@
+{
+  "schema_version": "public-benchmark-1.0",
+  "benchmark_id": "five-recipe-low-q-20261027",
+  "results_generated_utc": "2026-10-27T12:33:07.194343+00:00",
+  "packaged_date": "2026-10-28",
+  "origin": "Existing isolated-environment release validation run; no retraining or application tests for this documentation supplement.",
+  "runtime": {
+    "gp_model": "0.2.0",
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "sklearn": "1.7.2"
+  },
+  "target_kind": "low_q_shell_mean",
+  "target": {
+    "units": "dimensionless",
+    "time_window": [
+      1490,
+      1499
+    ],
+    "q_band": {
+      "min_exclusive": 0,
+      "max_inclusive": 0.11,
+      "units": "simulation_length^-1"
+    },
+    "shell_count": 5,
+    "time_blocks_for_diagnostics": 2,
+    "extraction_order": "time_average_then_equal_shell_mean",
+    "subtract_one": false
+  },
+  "input": {
+    "name": "ratio",
+    "encoding": "A/(A+B)",
+    "range": [
+      0.04545454545454545,
+      0.6818181818181818
+    ],
+    "material_mapping_confirmed": false
+  },
+  "validation": {
+    "scheme": "leave_one_ratio_out",
+    "folds": 5,
+    "training_rows_per_fold": 4,
+    "held_out_rows_per_fold": 1,
+    "seed_count_per_recipe": 1,
+    "selection_context": "exploratory",
+    "preprocessing": "training_fold_only",
+    "scope_counts": {
+      "ratio_interpolation": 3,
+      "ratio_extrapolation": 2,
+      "all_supplementary": 5
+    }
+  },
+  "reproduction_command": "python run_example.py --out runtime --target low_q_shell_mean --kernels linear rbf matern_32",
+  "source_output_sha256": {
+    "training_data.csv": "a3d12c11e551408957301daa2d0a01d6bbcc0eace560b0d2d4b8d94ceb457181",
+    "metrics_by_scope.csv": "dc637ee42b1093bcc2b823a287006c2bcfde64b2d60cbf3ade870736ee8cac96",
+    "observation_diagnostics.csv": "a6db175f999f7119edf3e96c1676ca28ad2160261ba22cedbf0ed19461e47817",
+    "regression_curves.csv": "cd02dc862f2344163d03e140a467286b36134cf17169bf49bf9bc4f1d6f27b5a",
+    "uncertainty_components.csv": "c68f852c69e26d3dc757633f80eb800bf0f88588c2398174df64a1617947f5c2",
+    "training_audit.json": "4c1991912787b594e564bc37cd3c8834c30b03e012302b6def661cdf8046a5fb"
+  },
+  "scientific_implementation_sha256": {
+    "train_gp.py": "765ab618d60fc3935609e2ac4c2d355e6332ec7f6dc21d93449c71a5ee806884",
+    "predict_gp.py": "7ecc00b74011d676b4ede9ca80acc44231c0aa78f407ff5ecea0060c0d941bf2",
+    "train_condition_gp.py": "f2a38d1ab973f9a160a22ff1fda24b0710f15fc1337c536791c82cde81a48037",
+    "train_early_gp.py": "41ad44c7c8fc9b78fda1bfd83f10974987db53c2f0a37ec5a10be96accb1ebc3",
+    "predict_condition_gp.py": "f9b098d412815adf35c8f420d0d4646c885a1de73da8d569322b5630df8d0522",
+    "predict_early_gp.py": "0619a62f4cbca9e7d6cb289d03bb4a8b1437303bfed338a011dd7b667372c7b0",
+    "gp_model/__init__.py": "1516c8c41e9b36ed0e8640477b3e8a30000b26aff3ea65007bef5b0cfd605643",
+    "gp_model/kernels.py": "a4fb64767ab3aebf26851e7b0c16bcc23ef231f2c158b29a8ea4ec1e7e7e5779",
+    "gp_model/models.py": "d1b9671b4cd034046f07bbce3531885610afa8fda05bd518c89c96c9b201bf8f",
+    "gp_model/regression.py": "5b22af815e7c1d5daf27adb70e5148a72aa55c5c8c98820d0f9b7c38e4cf26b5",
+    "gp_model/tasks.py": "7af5253bf144c7697ee405f06e0a801649a899be754aacb21cdd28cc3427c211",
+    "gp_model/workflow.py": "745a80892c95755a76494dcba8ec49620b4cf14923cd6e783674debbd9b51bcd"
+  },
+  "public_data_sha256": {
+    "examples/five_recipes/recipe_1/manifest.json": "07386c37ce6e3baf3d541564eede10103e891c34987b2cba2101e1cc1733ed98",
+    "examples/five_recipes/recipe_1/sqt.csv": "95ec6a683482e411f17d567768824756e22e3a70a685f1c0c9b40d5000de70fa",
+    "examples/five_recipes/recipe_2/manifest.json": "5fd9e5781a629647d04a098b33b7b9a284fce3a838c562618d5bfa1389de6794",
+    "examples/five_recipes/recipe_2/sqt.csv": "5390e073b7193467cf81eb00ad9884e4349405d769b1cff261aa3d1054d0377f",
+    "examples/five_recipes/recipe_3/manifest.json": "c134e1afdc2b47f3b00b6c53b1b7001a7ec020b90c2f8cbe598123ad22e7dc06",
+    "examples/five_recipes/recipe_3/sqt.csv": "5b6d62c8a76d9b81dea3599cb22251651608a731978bbdf8048580353565d1e1",
+    "examples/five_recipes/recipe_4/manifest.json": "a4245316acbd541e117509edcc83e2d64f35eaf312073dcfdb8f8ba6205dee02",
+    "examples/five_recipes/recipe_4/sqt.csv": "5a652aaabd913991f4a7bbb266de121c2d8f316f26f1a696a4cbbd57f2e8c26f",
+    "examples/five_recipes/recipe_5/manifest.json": "6064b64f142a7c7109b87d62822c727a6320d70771d2fb7fed489b82d2ceb6cd",
+    "examples/five_recipes/recipe_5/sqt.csv": "4a8db01bbade0eb04c0b38722fc9f0196938e5c69d50a3abdfdb815e14c235ed"
+  },
+  "privacy": {
+    "method": "Explicit scientific-field allowlists; no private paths, source folders, Drive IDs, accounts or credentials.",
+    "trained_models_included": false,
+    "original_html_report_included": false
+  },
+  "cautions": [
+    "Five recipes, one seed each; no independent validation dataset.",
+    "Interpolation and endpoint extrapolation are separate.",
+    "Noise lower-bound warnings are retained.",
+    "No run saving, agent latency or GPU throughput measured.",
+    "No original MD trajectories or experimental data."
+  ]
+}
